@@ -1,15 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def inicio(request):
     return render(request, "AppNotas/index.html")
 
 def usuario(request):
-    return HttpResponse("Vista usuario")
+    return render(request, "AppNotas/usuario.html")
 
 def notas(request):
-    return HttpResponse("Vista notas")
+    return render(request, "AppNotas/notas.html")
 
 def categoria(request):
-    return HttpResponse("Vista categoría")
-
+    return render(request, "AppNotas/categoria.html")
