@@ -1,9 +1,14 @@
 from django.db import models
 
+from django.db import models
+
 class CrearNota(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=20)
     email = models.EmailField(max_length=40)
+    curso = models.CharField(max_length=40, default='')  # Puedes establecer un valor predeterminado aquí
+    camada = models.IntegerField(default=0)
+
 
 class NotasGuardadas(models.Model):
     creador = models.ForeignKey(CrearNota, on_delete=models.CASCADE)

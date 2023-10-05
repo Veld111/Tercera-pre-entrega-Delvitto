@@ -1,0 +1,13 @@
+{% extends 'AppNotas/base.html' %}
+
+{% block title %} Actualizar Nota {% endblock title %}
+
+{% block content %}
+  <h2>Actualizar Nota</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+  </form>
+  <a href="{% url 'notas_guardadas' %}">Volver a la lista de notas</a>
+{% endblock content %}

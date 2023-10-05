@@ -14,7 +14,7 @@
     <title>Formulario - Agregar Curso</title>
 </head>
 <body>
-    <form action="/crear_nota_form/" method="post">
+    <form action="/crear_nota_form/" method="POST">{% csrf_token %}
         {% csrf_token %}
         <p>Curso: <input type="text" name="curso"></p>
         <p>Camada: <input type="text" name="camada"></p>

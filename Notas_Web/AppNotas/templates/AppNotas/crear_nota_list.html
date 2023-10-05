@@ -1,0 +1,12 @@
+{% extends 'AppNotas/base.html' %}
+
+{% block title %} Lista de Notas {% endblock title %}
+
+{% block content %}
+  <h2>Lista de Notas</h2>
+  <ul>
+    {% for nota in notas %}
+      <li><a href="{% url 'crear_nota_detail' nota.pk %}">{{ nota.curso }} - {{ nota.camada }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

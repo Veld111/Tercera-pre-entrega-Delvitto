@@ -1,10 +1,9 @@
 from django import forms
 from .models import CrearNota  # Asegúrate de importar el modelo adecuado
 
-class CrearNotaForm(forms.ModelForm):
-    class Meta:
-        model = CrearNota  # Aquí especifica el modelo al que pertenece el formulario
-        fields = ['nombre', 'apellido', 'email']
+class CrearNotaForm(forms.Form):
+    curso = forms.CharField()
+    camada = forms.IntegerField()
 
 # Formulario para guardar notas
 class NotasGuardadasForm(forms.ModelForm):
