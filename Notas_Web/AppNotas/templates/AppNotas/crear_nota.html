@@ -1,0 +1,17 @@
+<!-- templates/AppNotas/crear_nota.html -->
+
+{% extends 'AppNotas/base.html' %}
+
+{% load static %} 
+
+{% block title %}Crear Nota{% endblock %}
+
+{% block content %}
+    <h1>Crear Nueva Nota</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Nota</button>
+    </form>
+    <a href="{% url 'inicio' %}">Volver a la página principal</a>
+{% endblock %}

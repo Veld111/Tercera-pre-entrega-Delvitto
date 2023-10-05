@@ -1,0 +1,25 @@
+<!-- templates/AppNotas/notas_guardadas.html -->
+
+{% extends 'AppNotas/base.html' %}
+
+{% load static %}
+
+{% block title %}Notas Guardadas{% endblock %}
+
+{% block content %}
+    <h1>Notas Guardadas</h1>
+
+    <!-- Aquí puedes listar las notas guardadas -->
+    <ul>
+        {% for nota in notas %}
+            <li>
+                <h3>{{ nota.titulo }}</h3>
+                <p>{{ nota.contenido }}</p>
+                <a href="{% url 'editar_nota' nota.id %}">Editar Nota</a> |
+                <a href="{% url 'eliminar_nota' nota.id %}">Eliminar Nota</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'crear_nota' %}">Crear Nueva Nota</a>
+{% endblock %}
