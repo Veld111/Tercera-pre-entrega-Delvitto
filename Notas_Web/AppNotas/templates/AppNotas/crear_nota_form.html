@@ -1,0 +1,14 @@
+{% extends 'AppNotas/base.html' %}
+
+{% load static %}
+
+{% block title %} Crear Nota {% endblock title %}
+
+{% block content %}
+    <h2>Crear Nueva Nota</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Esto renderizará todos los campos del formulario -->
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock content %}
