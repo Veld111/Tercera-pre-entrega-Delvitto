@@ -15,3 +15,4 @@ class NotasGuardadas(models.Model):
 class EliminarNota(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
+

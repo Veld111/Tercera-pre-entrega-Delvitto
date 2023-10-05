@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from .forms import CrearNotaForm  # Asegúrate de importar el formulario adecuado
 
 
-
 def inicio(request):
     return render(request, "AppNotas/index.html")
 
@@ -24,9 +23,8 @@ def crear_nota_form(request):
             # Guarda el formulario si es válido
             form.save()
             # Puedes redirigir a la página de éxito o a donde lo necesites
-            return redirect('nombre_de_la_vista_o_url')
+            return redirect('AppNotas/index.html')
     else:
         form = CrearNotaForm()  # Crea una instancia vacía del formulario
 
-    return render(request, 'AppNotas/crear_nota_form.html', {'form': form})
-
+    return render(request, 'AppNotas/crear_nota_form.html')
