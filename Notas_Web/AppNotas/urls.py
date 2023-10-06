@@ -7,7 +7,6 @@ urlpatterns = [
     path('notas_guardadas/', views.notas_guardadas, name='notas_guardadas'),
     path('eliminar_nota/', views.eliminar_nota, name='eliminar_nota'),
     path('crear_nota_form/', views.crear_nota_form, name='crear_nota_form'),
-    path('apiform/', views.form_con_api, name="form_con_api"),
     path('buscar_notas/', views.buscar_notas, name='buscar_notas'),
 ]
 

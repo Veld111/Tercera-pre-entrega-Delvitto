@@ -5,3 +5,18 @@
     {{ formulario.termino_busqueda.label_tag }}: {{ formulario.termino_busqueda }}
     <button type="submit">Buscar</button>
 </form>
+
+<!-- Agregamos un espacio para mostrar los resultados -->
+<div class="resultados">
+    {% if resultados %}
+        <h2>Resultados de la búsqueda:</h2>
+        <ul>
+            {% for nota in resultados %}
+                <li>{{ nota.titulo }}</li>
+                <!-- Puedes mostrar otros detalles de la nota aquí si lo deseas -->
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron notas que coincidan con la búsqueda.</p>
+    {% endif %}
+</div>
