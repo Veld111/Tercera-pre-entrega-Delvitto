@@ -1,0 +1,33 @@
+<!-- templates/AppNotas/resultados_buscar_notas.html -->
+
+{% extends 'AppNotas/base.html' %}
+
+{% load static %}
+
+{% block title %} Resultados de Búsqueda de Notas {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2>Resultados de la Búsqueda de Notas</h2>
+
+    <!-- Agregar el formulario de búsqueda aquí -->
+    <form method="post">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <ul>
+            {% for nota in resultados %}
+                <li>{{ nota.titulo }}</li>
+                <p>{{ nota.contenido }}</p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron notas que coincidan con la búsqueda.</p>
+    {% endif %}
+    
+    <a href="{% url 'inicio' %}">Volver al Inicio</a>
+</div>
+{% endblock content %}

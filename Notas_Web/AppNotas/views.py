@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.shortcuts import render, redirect
-from AppNotas.forms import CrearNotaForm
-from .models import CrearNota
+from django.shortcuts import render
+from AppNotas.forms import CrearNotaForm, BuscarNotasForm
+from .models import CrearNota, NotasGuardadas
 
 
 def inicio(request):
@@ -15,6 +15,36 @@ def notas_guardadas(request):
 
 def eliminar_nota(request):
     return render(request, "AppNotas/eliminar_nota.html")
+
+def inicio(request):
+    formulario = BuscarNotasForm()
+    resultados = []
+
+    if request.method == "POST":
+        formulario = BuscarNotasForm(request.POST)
+        if formulario.is_valid():
+            termino_busqueda = formulario.cleaned_data['termino_busqueda']
+            # Realiza la búsqueda en tu base de datos
+            resultados = NotasGuardadas.objects.filter(titulo__icontains=termino_busqueda)
+
+    return render(request, "AppNotas/index.html", {"formulario": formulario, "resultados": resultados})
+
+
+
+def buscar_notas(request):
+    resultados = []
+    formulario = BuscarNotasForm()  # Crear una instancia del formulario vacío
+
+    if request.method == "POST":
+        formulario = BuscarNotasForm(request.POST)
+        if formulario.is_valid():
+            termino_busqueda = formulario.cleaned_data['termino_busqueda']
+            # Realiza la búsqueda en tu base de datos
+            resultados = CrearNota.objects.filter(titulo__icontains=termino_busqueda)
+
+    return render(request, "AppNotas/resultados_buscar_notas.html", {"resultados": resultados, "formulario": formulario})
+
+
 
 def crear_nota_form(request):
     if request.method == 'POST':

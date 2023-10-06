@@ -1,0 +1,7 @@
+<!-- templates/AppNotas/buscar_notas_form.html -->
+
+<form method="post">
+    {% csrf_token %}
+    {{ formulario.termino_busqueda.label_tag }}: {{ formulario.termino_busqueda }}
+    <button type="submit">Buscar</button>
+</form>
