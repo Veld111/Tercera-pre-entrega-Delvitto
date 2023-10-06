@@ -17,6 +17,33 @@ def eliminar_nota(request):
     return render(request, "AppNotas/eliminar_nota.html")
 
 def crear_nota_form(request):
+    if request.method == 'POST':
+        # Modificamos aquí para que capture los datos de nombre y apellido en lugar de curso y camada
+        formulario = CrearNotaForm(request.POST)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            crearnota = CrearNota(nombre=informacion["nombre"], apellido=informacion["apellido"])
+            crearnota.save()
+            return render(request, "AppNotas/index.html")
+    else:
+        formulario = CrearNotaForm()
+
+    return render(request, 'AppNotas/crear_nota_form.html', {"miFormulario": formulario})
+
+def form_con_api(request):
+    if request.method == "POST":
+        miFormulario = CrearNotaForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            crearnota = CrearNota(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"])
+            crearnota.save()
+            return render(request, "AppNotas/index.html")
+    else:
+        miFormulario = CrearNotaForm()
+
+    return render(request, "AppNotas/form_con_api.html", {"miFormulario": miFormulario})
+
+"""def crear_nota_form(request):
       if request.method == 'POST':
       
             curso =  CrearNota(request.post['curso'],(request.post['camada']))
@@ -41,7 +68,7 @@ def form_con_api(request):
 
     return render(request, "AppNotas/form_con_api.html", {"miFormulario": miFormulario})
 
-
+"""
 """def crear_nota_form(request):
     if request.method == 'POST':
         form = CrearNotaForm(request.POST)  # Crea una instancia del formulario con los datos POST

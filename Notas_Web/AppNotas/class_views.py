@@ -21,7 +21,7 @@ class CrearNotaDetailView(DetailView):
 class CrearNotaCreateView(CreateView):
     model = CrearNota
     template_name = "AppNotas/crear_nota_create.html"
-    fields = ["curso", "camada"]
+    fields = ["nombre", "apellido", "email"]
     success_url = reverse_lazy("notas_guardadas")
 
 
@@ -29,7 +29,7 @@ class CrearNotaCreateView(CreateView):
 class CrearNotaUpdateView(UpdateView):
     model = CrearNota
     template_name = "AppNotas/crear_nota_update.html"
-    fields = ["curso", "camada"]
+    fields = ["nombre", "apellido", "email"]
     success_url = reverse_lazy("List")
 
 

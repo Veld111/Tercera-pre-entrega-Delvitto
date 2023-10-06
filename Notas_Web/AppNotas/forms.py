@@ -2,9 +2,9 @@ from django import forms
 from .models import CrearNota  # Asegúrate de importar el modelo adecuado
 
 class CrearNotaForm(forms.Form):
-    curso = forms.CharField()
-    camada = forms.IntegerField()
-
+    nombre = forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=20)
+    email = forms.CharField(max_length=40)
 # Formulario para guardar notas
 class NotasGuardadasForm(forms.ModelForm):
     creador = forms.ModelChoiceField(queryset=CrearNota.objects.all())
