@@ -7,9 +7,7 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <p>Nombre: {{ miFormulario.nombre }}</p>
-        <p>Apellido: {{ miFormulario.apellido }}</p>
-        <p>Email: {{ miFormulario.email }}</p> {# Agregamos el campo de email aquí #}
+        <p>Título: {{ miFormulario.titulo }}</p> {# Cambiamos "nombre" a "titulo" #}
         <input type="submit" value="Enviar">
     </form>
 {% endblock content %}
